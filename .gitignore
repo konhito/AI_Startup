@@ -1,0 +1,11 @@
+.venv/
+.DS_Store
+.env
+__pycache__/
+.pytest_cache/
+*.db
+
+data/
+*.db-wal
+*.db-shm
+artifacts/

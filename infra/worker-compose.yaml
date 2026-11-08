@@ -1,0 +1,36 @@
+# Run on an existing Linux GPU VM with NVIDIA Container Toolkit installed.
+services:
+  model:
+    image: ${VLLM_IMAGE:?Set a tested vLLM image tag or digest}
+    restart: unless-stopped
+    ipc: host
+    ports:
+      - "8000:8000"
+    volumes:
+      - model-cache:/root/.cache/huggingface
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+      VLLM_API_KEY: ${UPSTREAM_API_KEY:?Set a worker API key}
+    command:
+      - --model
+      - ${MODEL_ID:?Choose a GLM checkpoint for your GPU capacity}
+      - --served-model-name
+      - ${MODEL_NAME:-glm}
+      - --tensor-parallel-size
+      - ${TENSOR_PARALLEL_SIZE:-1}
+      - --max-model-len
+      - ${MAX_MODEL_LEN:-16384}
+      - --enable-auto-tool-choice
+      - --tool-call-parser
+      - ${TOOL_CALL_PARSER:?Set the parser required by your chosen GLM checkpoint}
+      - --reasoning-parser
+      - ${REASONING_PARSER:?Set the reasoning parser required by your checkpoint}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+volumes:
+  model-cache:

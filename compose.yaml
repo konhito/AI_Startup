@@ -1,0 +1,15 @@
+services:
+  gateway:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_PATH: /srv/data/unbound.db
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - gateway-data:/srv/data
+    restart: unless-stopped
+    init: true
+    stop_grace_period: 75s
+volumes:
+  gateway-data:

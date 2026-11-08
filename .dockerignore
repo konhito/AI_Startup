@@ -1,0 +1,8 @@
+*
+!requirements.lock
+!app/
+!app/**
+!frontend/
+!frontend/**
+!Dockerfile
+**/__pycache__/
