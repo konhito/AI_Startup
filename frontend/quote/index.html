@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10231d"><title>Estimate — quotes that close work</title>
+  <link rel="stylesheet" href="/assets/quote/styles.css"><script src="/assets/quote/app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="/quote/"><i>✦</i> ESTIMATE</a><span class="tag">FOR INDEPENDENT CONTRACTORS</span><nav><button class="nav-link active" data-view="quotes">Quotes</button><button class="nav-link" data-view="prospects">Prospects</button></nav></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">QUOTES WITHOUT THE BUSYWORK</p><h1>Send work.<br><em>Win work.</em></h1><p class="lede">Create a clear, professional estimate in minutes. Keep your next follow-up organised in the same place.</p></div><div class="intro-stat"><strong id="quote-count">0</strong><span>quotes made here</span><small>Saved only in this browser</small></div></section>
+
+    <section id="quotes" class="view">
+      <div class="section-title"><div><p class="eyebrow">01 / NEW ESTIMATE</p><h2>Build the quote.</h2></div><button class="button ghost" id="reset-quote">Start fresh</button></div>
+      <div class="quote-grid">
+        <form id="quote-form" class="quote-form">
+          <div class="form-block two"><label>Your business<input id="business-name" maxlength="80" placeholder="Northstar Electrical" required></label><label>Phone or email<input id="business-contact" maxlength="120" placeholder="hello@northstar.com"></label></div>
+          <div class="form-block two"><label>Client name<input id="client-name" maxlength="80" placeholder="Priya Shah" required></label><label>Job location<input id="job-location" maxlength="140" placeholder="Andheri West, Mumbai"></label></div>
+          <div class="form-block"><label>Project title<input id="project-title" maxlength="120" placeholder="Kitchen electrical upgrade" required></label></div>
+          <div class="form-block"><div class="line-heading"><label>Scope and pricing</label><button type="button" class="tiny" id="add-line">+ Add line</button></div><div id="line-items"></div></div>
+          <div class="form-block two"><label>Tax %<input id="tax-rate" type="number" min="0" max="100" value="0"></label><label>Valid for (days)<input id="valid-days" type="number" min="1" max="180" value="14"></label></div>
+          <div class="form-block"><label>Notes for client<textarea id="quote-notes" maxlength="600" placeholder="Includes labour and materials. Schedule subject to site inspection."></textarea></label></div>
+          <div class="form-actions"><button class="button primary" type="submit">Save quote</button><button class="button dark" type="button" id="print-quote">Print / save PDF ↗</button></div>
+        </form>
+        <article class="paper" id="quote-paper"><div class="paper-top"><div><span id="preview-business">YOUR BUSINESS</span><h3>ESTIMATE</h3></div><div class="estimate-number">EST. <b id="estimate-id">DRAFT</b><br><span id="estimate-date"></span></div></div><div class="paper-client"><div><small>PREPARED FOR</small><strong id="preview-client">Client name</strong><span id="preview-location">Job location</span></div><div><small>PROJECT</small><strong id="preview-project">Your project</strong><span>Valid for <b id="preview-valid">14</b> days</span></div></div><div class="paper-lines"><div class="paper-row paper-head"><span>DESCRIPTION</span><span>QTY</span><span>RATE</span><span>AMOUNT</span></div><div id="preview-lines"></div></div><div class="paper-total"><span>Subtotal</span><b id="preview-subtotal">$0.00</b><span>Tax</span><b id="preview-tax">$0.00</b><strong>TOTAL <b id="preview-total">$0.00</b></strong></div><p class="paper-note" id="preview-notes">Add a short note about the work, schedule, or what happens next.</p><footer>Thank you for the opportunity · <span id="preview-contact">Your contact details</span></footer></article>
+      </div>
+    </section>
+
+    <section id="prospects" class="view" hidden>
+      <div class="section-title"><div><p class="eyebrow">02 / FOLLOW UP WELL</p><h2>Prospect workspace.</h2><p>Import people who have opted in or with whom you already have a legitimate business relationship. This tool creates drafts only; you review and send each message yourself.</p></div></div>
+      <div class="prospect-actions"><label class="file-button">Import consented CSV<input id="csv-file" type="file" accept=".csv,text/csv"></label><button class="button ghost" id="download-template">Download CSV template</button><span id="import-status"></span></div>
+      <div class="prospect-layout"><section class="prospect-card"><div class="card-heading"><div><p class="eyebrow">YOUR LIST</p><h3>Eligible contacts</h3></div><span id="prospect-count">0 contacts</span></div><div id="prospect-list" class="prospect-list"><p class="empty">Import a CSV to begin. Required columns: name, business, consent. Optional: email, phone, service.</p></div></section><section class="draft-card"><p class="eyebrow">PERSONALISED DRAFT</p><h3 id="draft-title">Choose a contact</h3><p id="draft-channel">We only prepare a message after consent is recorded.</p><textarea id="message-draft" readonly placeholder="Your individual outreach draft will appear here."></textarea><div class="draft-actions"><button class="button primary" id="copy-draft" disabled>Copy draft</button><button class="button ghost" id="mark-contacted" disabled>Mark contacted</button></div></section></div>
+    </section>
+  </main>
+  <div id="toast" hidden role="status"></div>
+</body>
+</html>
