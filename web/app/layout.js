@@ -1,4 +1,5 @@
 import './styles.css';
+import './ops.css';
 
 export const metadata = {
   title: 'Replyline — Reply to every Google review with care',
